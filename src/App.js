@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  Container,
+  Row,
+  Col
+} from 'react-bootstrap';
+import Navbar from './components/Navbar';
+import {  
+  Switch,
+  Route,  
+} from "react-router-dom";
+import HomePage from "./pages/Home";
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {      
+    };
+  }
+  
+  componentDidMount() {
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <Container fluid style={{padding:0}}>
+          <Row>
+            <Col>
+              <Navbar />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div style={{padding:10}}>
+                <Switch>
+                  <Route path="/home">
+                    <HomePage/>
+                  </Route>
+                  <Route path="/discord">
+                    <p>Discord Link</p>
+                  </Route>
+                  <Route path="/about-us">
+                    <p>Tentang Kami</p>
+                  </Route>
+                </Switch>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;
